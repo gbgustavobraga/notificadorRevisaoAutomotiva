@@ -1,0 +1,12 @@
+<%- include('includes/head') %>
+<%- include('includes/nav-logado') %>
+
+<div class="content">
+  <h3 class="text-center">Olá <%= user.email %></h1>
+  <br>
+  <%- include('includes/messages'); %>
+  <br>
+  <a href="/customer/index" class="button-login"><button>Registro</button></a>
+</div>
+
+<%- include('includes/footer') %>

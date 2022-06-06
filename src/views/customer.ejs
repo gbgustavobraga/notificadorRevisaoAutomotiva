@@ -1,0 +1,96 @@
+<%- include('includes/head') %>
+<%- include('includes/nav-logado') %>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+<Script>
+    $(function()
+    {
+        $.ajax({
+            url: "/home/gb/Documents/Projects/OilChangeNotification/src/backend/tes.py",
+            type: "post",
+            dataType: "html",
+            data: { var1: "foo", var2: "foo"},
+            success: function(response){
+                $('#send').html(response);
+                console.log("ok")
+            }
+
+        })
+    })
+</Script>
+
+
+<body>
+
+<section class="area-form">
+    <div class="container form">
+        <form action="/customer/register" method="POST" name="oilChangeNotification" id="form"class="form">
+            <input type="hidden" name="_csrf" value=<%= csrfToken %>>
+            <%- include('includes/messages') %>
+            <h3>Formulario</h3>
+            <br>
+            <div class="form-control">
+                <label for="date">Data da troca</label>
+                <input name="data[date]" type="date" id="date" placeholder="Notificar em" />
+            </div>
+            <div class="form-control">
+                <input name="data[first_name]" type="text" id="first_name" placeholder="Nome do cliente" />
+            </div>
+            <div class="form-control">
+                <input name="data[last_name]" type="text" id="last_name" placeholder="Sobrenome do cliente" />
+            </div>
+            <div class="form-control">
+                <input name="data[email]" type="email" id="email" placeholder="Email do cliente" />
+            </div>
+            <div class="form-control">
+                <input name="data[telephone]" type="number" id="telephone" placeholder="Telefone do cliente" />
+            </div>
+            <div class="form-control">
+                <input name="data[car]" type="text" id="car" placeholder="Modelo do carro" />
+            </div>
+            <div class="form-control">
+                <input name="data[plate]" type="text" id="plate" placeholder="Placa do veículo" />
+            </div>
+            <div class="form-control">
+                <input name="data[km]" type="number" id="km" placeholder="Quilometragem" />
+            </div>
+            <div class="form-control">
+                <input name="data[oil]" type="text" id="oil" placeholder="Tipo de óleo" />
+            </div>
+            <div class="control-group">
+                <label class="control control-checkbox" for="oil_filter">
+                    Filtro de Oĺeo
+                    <input name="data[oil_filter]" type="checkbox" id="oil_filter" />
+                    <div class="control_indicator"></div>
+                </label>
+                <label class="control control-checkbox" for="air_filter">
+                    Filtro de Ar
+                    <input name="data[air_filter]" type="checkbox" id="air_filter" />
+                    <div class="control_indicator"></div>
+                </label>
+                <label class="control control-checkbox" for="fuel_filter">
+                    Filtro de Combustível
+                    <input name="data[fuel_filter]" type="checkbox" id="fuel_filter" />
+                    <div class="control_indicator"></div>
+                </label>
+            </div>
+            <div class="form-control">
+                <br>
+                <label for="date">Data da proxima troca</label>
+                <input name="data[next_exchange]" type="number" id="next_exchange"
+                    placeholder="Quilometragem da proxima troca" />
+            </div>
+            <div class="form-control">
+                <input name="data[notification_change]" type="date" id="notification_change"
+                    placeholder="Notificar em" />
+            </div>
+            <button type="submit" id="sendEmail">Enviar</button>
+        </form>
+    </div>
+
+</section>
+
+<script>
+
+</script>
+
+<%- include('includes/footer') %>
